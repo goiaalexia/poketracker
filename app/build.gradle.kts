@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.pokemon_boxes"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.pokemon_boxes"
