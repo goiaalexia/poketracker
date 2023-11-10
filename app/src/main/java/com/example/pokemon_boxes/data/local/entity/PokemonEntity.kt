@@ -4,7 +4,7 @@ import androidx.room.PrimaryKey
 import java.util.Date
 
 @Entity
-data class Pokemon(
+data class PokemonEntity(
     @PrimaryKey val id: Int?,
     val name: String,
     val type: String,
@@ -15,7 +15,7 @@ data class Pokemon(
     val spDef: Boolean,
     val spd: Boolean,
     val sprite: String,
-    val date: Date,
+    val date: Date?,
     val place: String,
     val game: String,
     val notes: String,

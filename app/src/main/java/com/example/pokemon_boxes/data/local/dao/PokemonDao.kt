@@ -6,28 +6,28 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import com.example.pokemon_boxes.data.local.entity.Pokemon
+import com.example.pokemon_boxes.data.local.entity.PokemonEntity
 import kotlinx.coroutines.flow.Flow
 
 // data access object for db CRUD
 @Dao
 interface PokemonDao {
 
-    @Query("SELECT * FROM Pokemon")
-    fun getAllPokemon(): Flow<List<Pokemon>>
+    @Query("SELECT * FROM PokemonEntity")
+    fun getAllPokemon(): Flow<List<PokemonEntity>>
 
     @Query(
-        """SELECT * FROM Pokemon
+        """SELECT * FROM PokemonEntity
             WHERE id = :id"""
     )
-    suspend fun getPokemonById(id: Int): Pokemon
+    suspend fun getPokemonById(id: Int): PokemonEntity?
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun createPokemon(pokemon: Pokemon)
+    suspend fun createPokemon(pokemonEntity: PokemonEntity)
 
     @Delete
-    suspend fun deletePokemon(pokemon: Pokemon)
+    suspend fun deletePokemon(pokemonEntity: PokemonEntity)
 
     @Update
-    suspend fun updatePokemon(pokemon: Pokemon)
+    suspend fun updatePokemon(pokemonEntity: PokemonEntity)
 }
