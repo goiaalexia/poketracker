@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Delete
@@ -24,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonScreen(state: PokemonState, onEvent: (PokemonEvent) -> Unit) {
     Scaffold(topBar = {
@@ -71,39 +71,39 @@ fun PokemonScreen(state: PokemonState, onEvent: (PokemonEvent) -> Unit) {
             )
             OutlinedTextField(
                 value = state.game,
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
-                placeholder = { Text(text = "") }
+                onValueChange = { onEvent(PokemonEvent.GameChange(it)) },
+                placeholder = { Text(text = "aa") }
 
             )
             OutlinedTextField(
                 value = state.notes,
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                onValueChange = { onEvent(PokemonEvent.NotesChange(it)) },
                 placeholder = { Text(text = "") }
 
             )
             state.date?.let { date ->
                 OutlinedTextField(
                     value = date,
-                    onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                    onValueChange = { onEvent(PokemonEvent.DateChange(it)) },
                     placeholder = { Text(text = "01/01/1970") }
 
                 )
             }
             OutlinedTextField(
                 value = state.type,
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                onValueChange = { onEvent(PokemonEvent.TypeChange(it)) },
                 placeholder = { Text(text = "???") }
 
             )
             OutlinedTextField(
                 value = state.dexNo.toString(),
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                onValueChange = { onEvent(PokemonEvent.DexNoChange(it.toInt())) },
                 placeholder = { Text(text = "0") }
 
             )
             OutlinedTextField(
                 value = state.caught.toString(),
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                onValueChange = { onEvent(PokemonEvent.CaughtChange(it.toBoolean())) },
                 placeholder = { Text(text = "false") }
             )
             Box(
@@ -122,10 +122,3 @@ fun PokemonScreen(state: PokemonState, onEvent: (PokemonEvent) -> Unit) {
     }
 }
 
-@Composable
-fun triangleShape() = GenericShape { size, _ ->
-    moveTo(size.width / 2, 0f)
-    lineTo(size.width, size.height)
-    lineTo(0f, size.height)
-    close()
-}

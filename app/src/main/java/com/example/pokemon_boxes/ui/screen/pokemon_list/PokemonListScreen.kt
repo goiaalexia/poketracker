@@ -2,7 +2,6 @@
 
 package com.example.pokemon_boxes.ui.screen.pokemon_list
 
-import android.text.style.ClickableSpan
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokemon_boxes.domain.model.Pokemon
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonListScreen(
     pokemonList: List<Pokemon>,
