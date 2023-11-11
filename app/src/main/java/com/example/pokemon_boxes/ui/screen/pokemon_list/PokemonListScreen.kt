@@ -5,7 +5,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -17,8 +21,19 @@ import com.example.pokemon_boxes.domain.model.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun pokemonListScreen(pokemonList: List<Pokemon>, onPokemonClick: (Pokemon) -> Unit) {
-    Scaffold { padding ->
+fun PokemonListScreen(
+    pokemonList: List<Pokemon>,
+    onPokemonClick: (Pokemon) -> Unit,
+    onAddPokemonClick: () -> Unit
+) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = onAddPokemonClick) {
+                Icon(imageVector = Icons.Rounded.Add, contentDescription = "Add Pokemon")
+
+            }
+        }
+    ) { padding ->
         LazyColumn(
             contentPadding = PaddingValues(
                 start = 20.dp,
@@ -38,7 +53,8 @@ fun pokemonListScreen(pokemonList: List<Pokemon>, onPokemonClick: (Pokemon) -> U
                             text = (pokemon.type)
                         )
                     },
-                    modifier = Modifier.clickable(onClick = {onPokemonClick(pokemon)}))
+                    modifier = Modifier.clickable(onClick = { onPokemonClick(pokemon) })
+                )
             }
         }
     }

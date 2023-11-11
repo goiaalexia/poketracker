@@ -1,5 +1,6 @@
 package com.example.pokemon_boxes.ui.screen.pokemon
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemon_boxes.domain.model.Pokemon
@@ -15,7 +16,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PokemonViewModel @Inject constructor(private val repository: IPokemonRepository) :
+class PokemonViewModel @Inject constructor(
+    private val repository: IPokemonRepository,
+    private val savedStateHandle: SavedStateHandle
+) :
     ViewModel() {
 
     private val _state = MutableStateFlow(PokemonState())
@@ -25,8 +29,34 @@ class PokemonViewModel @Inject constructor(private val repository: IPokemonRepos
     private val _event = Channel<UIEvent>()
     val event = _event.receiveAsFlow()
 
-    fun sendEvent(event: UIEvent) {
+    private fun sendEvent(event: UIEvent) {
         viewModelScope.launch { _event.send(event) }
+    }
+
+    init {
+        savedStateHandle.get<String>("id")?.let {
+            val id = it.toInt()
+            viewModelScope.launch {
+                repository.getPokemonById(id)
+                    ?.let { pokemon ->
+                        _state.update { screenState ->
+                            screenState.copy(
+                                id = pokemon.id,
+                                name = pokemon.name,
+                                type = pokemon.type,
+                                sprite = pokemon.sprite,
+                                date = pokemon.date,
+                                place = pokemon.place,
+                                game = pokemon.game,
+                                notes = pokemon.notes,
+                                caught = pokemon.caught,
+                                dexNo = pokemon.dexNo,
+                            )
+                        }
+                    }
+            }
+
+        }
     }
 
     fun onEvent(event: PokemonEvent) {
