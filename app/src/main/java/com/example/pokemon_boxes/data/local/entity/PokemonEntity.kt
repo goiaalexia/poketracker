@@ -1,7 +1,6 @@
 package com.example.pokemon_boxes.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity
 data class PokemonEntity(
@@ -9,7 +8,7 @@ data class PokemonEntity(
     val name: String,
     val type: String,
     val sprite: String,
-    val date: Date?,
+    val date: String?,
     val place: String,
     val game: String,
     val notes: String,

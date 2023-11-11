@@ -22,7 +22,7 @@ interface PokemonDao {
     )
     suspend fun getPokemonById(id: Int): PokemonEntity?
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createPokemon(pokemonEntity: PokemonEntity)
 
     @Delete

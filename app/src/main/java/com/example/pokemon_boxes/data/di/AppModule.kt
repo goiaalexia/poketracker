@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.pokemon_boxes.data.local.PokemonDatabase
 import com.example.pokemon_boxes.data.repository.PokemonRepository
+import com.example.pokemon_boxes.domain.repository.IPokemonRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,7 +24,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePokemonRepository(database: PokemonDatabase): PokemonRepository =
+    fun providePokemonRepository(database: PokemonDatabase): IPokemonRepository =
         PokemonRepository(dao = database.dao)
 
 }

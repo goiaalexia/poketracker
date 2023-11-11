@@ -9,7 +9,7 @@ data class Pokemon(
     val name: String = "",
     val type: String = "",
     val sprite: String = "https://archives.bulbagarden.net/media/upload/9/98/Missingno_RB.png",
-    val date: Date? = SimpleDateFormat("DD/MM/YYYY").parse("01/01/1970"),
+    val date: String? ="",
     val place: String = "",
     val game: String = "",
     val notes: String = "",

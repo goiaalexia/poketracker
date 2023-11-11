@@ -81,12 +81,14 @@ fun PokemonScreen(state: PokemonState, onEvent: (PokemonEvent) -> Unit) {
                 placeholder = { Text(text = "") }
 
             )
-            OutlinedTextField(
-                value = state.date.toString(),
-                onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
-                placeholder = { Text(text = "01/01/1970") }
+            state.date?.let { date ->
+                OutlinedTextField(
+                    value = date,
+                    onValueChange = { onEvent(PokemonEvent.NameChange(it)) },
+                    placeholder = { Text(text = "01/01/1970") }
 
-            )
+                )
+            }
             OutlinedTextField(
                 value = state.type,
                 onValueChange = { onEvent(PokemonEvent.NameChange(it)) },

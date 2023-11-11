@@ -6,7 +6,7 @@ sealed interface PokemonEvent {
     data class NameChange(val value: String) : PokemonEvent
     data class TypeChange(val value: String) : PokemonEvent
     data class SpriteChange(val value: String) : PokemonEvent
-    data class DateChange(val value: Date) : PokemonEvent
+    data class DateChange(val value: String) : PokemonEvent
     data class PlaceChange(val value: String) : PokemonEvent
     data class GameChange(val value: String) : PokemonEvent
     data class NotesChange(val value: String) : PokemonEvent
