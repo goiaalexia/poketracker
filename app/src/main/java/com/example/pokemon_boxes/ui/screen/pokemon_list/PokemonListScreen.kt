@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.pokemon_boxes.ui.screen.pokemon_list
 
 import android.text.style.ClickableSpan
@@ -19,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.pokemon_boxes.domain.model.Pokemon
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonListScreen(
     pokemonList: List<Pokemon>,
