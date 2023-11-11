@@ -1,10 +1,10 @@
-package com.example.pokemon_boxes.domain.model
+package com.example.pokemon_boxes.ui.screen.pokemon
 
+import android.icu.text.CaseMap.Title
 import java.text.SimpleDateFormat
 import java.util.Date
 
-// for easier access to the ui levels
-data class Pokemon(
+data class PokemonState(
     val id: Int? = null,
     val name: String = "",
     val type: String = "",
