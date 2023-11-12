@@ -2,8 +2,12 @@
 
 package com.example.pokemon_boxes.ui.screen.pokemon_list
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -17,7 +21,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.pokemon_boxes.R
 import com.example.pokemon_boxes.domain.model.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +51,15 @@ fun PokemonListScreen(
                 bottom = 15.dp + padding.calculateBottomPadding()
             )
         ) {
-            item { Text(text = "Pokemon Boxes", style = MaterialTheme.typography.titleLarge) }
+            item { Image(
+                painter = painterResource(id = R.drawable.poketracker_photo), // Replace with your image resource
+                contentDescription = "poketracker photo",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp).width(100.dp)
+                    .clip(MaterialTheme.shapes.medium),
+                contentScale = ContentScale.Crop
+            ) }
             items(pokemonList) { pokemon ->
                 ListItem(
                     headlineText = {
