@@ -1,7 +1,6 @@
 package com.example.pokemon_boxes.data.local.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -9,7 +8,6 @@ import androidx.room.Update
 import com.example.pokemon_boxes.data.local.entity.PokemonEntity
 import kotlinx.coroutines.flow.Flow
 
-// data access object for db CRUD
 @Dao
 interface PokemonDao {
 
@@ -25,8 +23,8 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun createPokemon(pokemonEntity: PokemonEntity)
 
-    @Delete
-    suspend fun deletePokemon(pokemonEntity: PokemonEntity)
+    @Query("DELETE FROM PokemonEntity WHERE id = :pokemonEntity")
+    suspend fun deletePokemon(pokemonEntity: Int?)
 
     @Update
     suspend fun updatePokemon(pokemonEntity: PokemonEntity)

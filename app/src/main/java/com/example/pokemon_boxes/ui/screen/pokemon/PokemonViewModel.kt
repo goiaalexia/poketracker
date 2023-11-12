@@ -1,5 +1,6 @@
 package com.example.pokemon_boxes.ui.screen.pokemon
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -128,19 +129,9 @@ class PokemonViewModel @Inject constructor(
             PokemonEvent.DeletePokemon -> {
                 viewModelScope.launch {
                     val state = state.value
-                    val pokemon = Pokemon(
-                        state.id,
-                        state.name,
-                        state.type,
-                        state.sprite,
-                        state.date,
-                        state.place,
-                        state.game,
-                        state.notes,
-                        state.caught,
-                        state.dexNo
-                    )
+                    val pokemon = state.id
                     repository.deletePokemon(pokemon)
+                    Log.d("check","deleted pokemon with id" + state.id.toString())
                     sendEvent(UIEvent.NavigateBack)
                 }
             }

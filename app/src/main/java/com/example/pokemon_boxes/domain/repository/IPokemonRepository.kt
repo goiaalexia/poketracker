@@ -9,5 +9,5 @@ interface IPokemonRepository {
     suspend fun getPokemonById(id: Int): Pokemon?
     suspend fun createPokemon(pokemon: Pokemon)
     suspend fun updatePokemon(pokemon: Pokemon)
-    suspend fun deletePokemon(pokemon: Pokemon)
+    suspend fun deletePokemon(pokemon: Int?)
 }

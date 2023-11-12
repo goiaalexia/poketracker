@@ -52,33 +52,24 @@ android {
 }
 
 dependencies {
-    // Icons
     implementation("androidx.compose.material:material-icons-extended:1.3.1")
-
-    // Hilt
     implementation("com.google.dagger:hilt-android:2.44")
+    implementation("com.android.volley:volley:1.2.1")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.hilt:hilt-work:1.0.0")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-
-    // Runtime
     implementation("androidx.work:work-runtime-ktx:2.8.0")
-
-    // Navigation
     implementation("androidx.navigation:navigation-compose:2.5.3")
-
-    // Lifecycle
     val lifecycleVersion = "2.6.0"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
-
-    // Room
     val roomVersion = "2.5.0"
     implementation("androidx.room:room-runtime:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("io.coil-kt:coil-compose:2.0.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0")
