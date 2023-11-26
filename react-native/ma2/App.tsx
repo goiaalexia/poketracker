@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PokemonListScreen from './screens/PokemonListScreen';
 import PokemonDetailScreen from './screens/PokemonDetailScreen';
 import PokemonContext, {PokemonProvider} from "./contexts/PokemonContext";
+import 'react-native-gesture-handler'
 
 const Stack = createStackNavigator();
 

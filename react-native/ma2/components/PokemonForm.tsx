@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert } from 'react-native';
+import {View, Text, TextInput, Button, Image, Switch} from 'react-native';
 import { Pokemon } from '../models/Pokemon';
 
 const PokemonForm: React.FC<{
@@ -39,6 +39,10 @@ const PokemonForm: React.FC<{
 
     return (
         <View style={{ margin: 20 }}>
+            <Image
+                source={{ uri: sprite }}
+                style={{ width: 100, height: 100, marginBottom: 10, left: 100, }}
+            />
             <Text>Name:</Text>
             <TextInput
                 value={name}
@@ -95,13 +99,13 @@ const PokemonForm: React.FC<{
                 style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
             />
 
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
             <Text>Caught:</Text>
-            <TextInput
-                value={caught ? 'true' : 'false'}
-                onChangeText={(text) => setCaught(text.toLowerCase() === 'true')}
-                placeholder="Enter Caught (true/false)"
-                style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+            <Switch
+                value={caught}
+                onValueChange={(value) => setCaught(value)}
             />
+            </View>
 
             <Text>Dex No:</Text>
             <TextInput
