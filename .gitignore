@@ -1,0 +1,106 @@
+# React Native
+
+## dependencies
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+/yarn.lock
+/ios/Pods/
+
+## React Native Packager
+/ios/build/
+/android/build/
+/ios/Pods/
+*.keystore
+
+## Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+
+# Expo
+
+## Expo files
+.expo/
+/.expo-shared/
+.expo/*
+/web-build/
+/dist/
+/build/
+/.expo/settings.json
+
+## Expo and React Native config files
+app.json
+app.config.js
+metro.config.js
+babel.config.js
+
+# Kotlin (Android)
+
+## IDE specific files
+*.iml
+.gradle/
+/local.properties
+/.idea/
+/.DS_Store
+
+## Android specific
+/captures/
+/build/
+/output.json
+/app/build/
+
+## Gradle
+.gradle/
+/build/
+
+## Signing files
+*.jks
+*.keystore
+*.pem
+
+# Django
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.env
+*.venv
+venv/
+ENV/
+env.bak/
+env/
+*.log
+
+# Django specific
+*.log
+*.pot
+*.py[cod]
+/staticfiles/
+/mediafiles/
+db.sqlite3
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
+
+# Secrets
+.env
+config/settings/local.py
+secrets.json
+
+# Docker
+docker-compose.override.yml
+.env.db
+.env.local
+
+# macOS
+.DS_Store
+
+# Linux
+*~
